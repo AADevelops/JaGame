@@ -156,51 +156,7 @@ public class Key implements KeyListener{
   
   public void init(){
     //load from file to keyMap
-//    keyMap.put(KeyEvent.VK_0, false);
-//    keyMap.put(KeyEvent.VK_1, false);
-//    keyMap.put(KeyEvent.VK_2, false);
-//    keyMap.put(KeyEvent.VK_3, false);
-//    keyMap.put(KeyEvent.VK_4, false);
-//    keyMap.put(KeyEvent.VK_5, false);
-//    keyMap.put(KeyEvent.VK_6, false);
-//    keyMap.put(KeyEvent.VK_7, false);
-//    keyMap.put(KeyEvent.VK_8, false);
-//    keyMap.put(KeyEvent.VK_9, false);
-//    keyMap.put(KeyEvent.VK_A, false);
-//    keyMap.put(KeyEvent.VK_B, false);
-//    keyMap.put(KeyEvent.VK_C, false);
-//    keyMap.put(KeyEvent.VK_D, false);
-//    keyMap.put(KeyEvent.VK_E, false);
-//    keyMap.put(KeyEvent.VK_F, false);
-//    keyMap.put(KeyEvent.VK_G, false);
-//    keyMap.put(KeyEvent.VK_H, false);
-//    keyMap.put(KeyEvent.VK_I, false);
-//    keyMap.put(KeyEvent.VK_J, false);
-//    keyMap.put(KeyEvent.VK_K, false);
-//    keyMap.put(KeyEvent.VK_L, false);
-//    keyMap.put(KeyEvent.VK_M, false);
-//    keyMap.put(KeyEvent.VK_N, false);
-//    keyMap.put(KeyEvent.VK_O, false);
-//    keyMap.put(KeyEvent.VK_P, false);
-//    keyMap.put(KeyEvent.VK_Q, false);
-//    keyMap.put(KeyEvent.VK_R, false);
-//    keyMap.put(KeyEvent.VK_S, false);
-//    keyMap.put(KeyEvent.VK_T, false);
-//    keyMap.put(KeyEvent.VK_U, false);
-//    keyMap.put(KeyEvent.VK_V, false);
-//    keyMap.put(KeyEvent.VK_W, false);
-//    keyMap.put(KeyEvent.VK_X, false);
-//    keyMap.put(KeyEvent.VK_Y, false);
-//    keyMap.put(KeyEvent.VK_Z, false);
-//    keyMap.put(KeyEvent.VK_SPACE, false);
-//    keyMap.put(KeyEvent.VK_TAB, false);
-//    keyMap.put(KeyEvent.VK_ENTER, false);
-//    keyMap.put(KeyEvent.VK_SHIFT, false);
-//    keyMap.put(KeyEvent.VK_ESCAPE, false);
-//    keyMap.put(KeyEvent.VK_DOWN, false);
-//    keyMap.put(KeyEvent.VK_LEFT, false);
-//    keyMap.put(KeyEvent.VK_RIGHT, false);
-//    keyMap.put(KeyEvent.VK_UP, false);
+
   }
   
   public void keyPressed(KeyEvent e){
