@@ -18,6 +18,7 @@ public class Surface {
     // color param is temp for testing
     public Surface(Display mainDisplay, Color color, int x, int y, int width, int height) {
         this.surface = new GraphicsPanel();
+        this.surface.setLayout(null);
         this.surface.setBounds(x, y, width, height);
         this.surface.setBackground(color);
         mainDisplay.getDisplay().add(this.surface);
