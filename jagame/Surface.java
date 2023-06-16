@@ -6,12 +6,27 @@
 
 package jagame;
 
+import java.awt.Color;
 import javax.swing.JPanel;
 
 public class Surface {
-    static JPanel surface;
+    private JPanel surface;
 
-    public void init() {
-        //
+    // color param is temp for testing
+    public Surface(Display mainDisplay, Color color, int x, int y, int width, int height) {
+        this.surface = new JPanel();
+        this.surface.setBounds(x, y, width, height);
+        this.surface.setBackground(color);
+        mainDisplay.getDisplay().add(this.surface);
+    }
+
+    public void setBackground(Color color) {
+        this.surface.setBackground(color);
+    }
+
+    /* GETTERS */
+
+    public JPanel getSurface() {
+        return this.surface;
     }
 }
