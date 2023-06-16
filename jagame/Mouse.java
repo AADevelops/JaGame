@@ -7,17 +7,21 @@
 package jagame;
 
 import java.awt.MouseInfo;
-import java.awt.event.MouseListener;
+import java.awt.Point;
+import java.awt.PointerInfo;
+// import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseWheelListener;
-import java.awt.event.MouseWheelEvent;
+// import java.awt.event.MouseWheelListener;
+// import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseListener;
 
-public class Mouse {
-    //
-    final static int X = 0;
-    final static int Y = 1;
-    private static int[] mousePos = new int[2];
-    static boolean[] mouseButtons = new boolean[MouseInfo.getNumberOfButtons()];
+public class Mouse implements MouseListener {
+    final int X = 0;
+    final int Y = 1;
+
+    private int[] mousePos = new int[2];
+    private boolean[] mouseButtons = new boolean[MouseInfo.getNumberOfButtons()];
+
     public void mouseClicked(MouseEvent e){
     }
     public void mouseEntered(MouseEvent e){
@@ -30,10 +34,6 @@ public class Mouse {
     public void mouseReleased(MouseEvent e){
         mouseButtons[e.getButton()] = false;
     }
-    public void mouseMoved(MouseEvent e){
-        mousePos[0] = e.getX();
-        mousePos[1] = e.getY();
-    }
     public void mouseDragged(MouseEvent e){
         
     }
@@ -42,10 +42,14 @@ public class Mouse {
         return mouseButtons;
     }
     
-    public int[] getPos(MouseEvent e){
+    public int[] getPos() {
+        PointerInfo cursorInfo = MouseInfo.getPointerInfo();
+        Point cursorLocation = cursorInfo.getLocation();
+        mousePos[0] = (int) cursorLocation.getX();
+        mousePos[1] = (int) cursorLocation.getY();
         return mousePos;
     }
-//    
+ 
 //    public void setPos(int x, int y){
 //        int xOffset = mousePos[X] - e.getX();
 //        int yOffset = mousePos[Y] - e.getY();
