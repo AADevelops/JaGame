@@ -36,10 +36,6 @@ public class Image extends Shape{
         
     }
     
-//    public void draw(Graphics g){
-//        
-//    }
-    
     public BufferedImage getImage(){
         return this.picture;
     }

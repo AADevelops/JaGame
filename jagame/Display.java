@@ -10,12 +10,12 @@ import java.awt.Color;
 import javax.swing.JFrame;
 
 public class Display {
-    private JFrame window;
+    private static JFrame window;
 
     public Display(String title, int width, int height) {
         this.window = new JFrame(title);
         this.window.setSize(width, height);
-        this.window.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        this.window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.window.setVisible(true);
     }
 
@@ -29,7 +29,7 @@ public class Display {
 
     /* GETTERS */
 
-    public JFrame getDisplay() {
+    public JFrame getFrame() {
         return this.window;
     }
 }

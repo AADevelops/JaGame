@@ -27,11 +27,6 @@ public class GraphicsPanel extends JPanel {
                 int height = ((Rect)object).getHeight();
                 g.setColor(((Rect)object).getColor());
                 g.fillRect(x, y, width, height);
-            }else if(object instanceof Circle){
-                int radius = ((Circle)object).getRadius();
-                int width = ((Circle)object).getWidth();
-                g.setColor(((Circle)object).getColor());
-                g.fillOval(x - radius, y - radius, width, width);
             }else if(object instanceof Ellipse){ //combine with rect
                 int width = ((Ellipse)object).getWidth();
                 int height = ((Ellipse)object).getHeight();
@@ -51,9 +46,9 @@ public class GraphicsPanel extends JPanel {
                 g.drawLine(x, endX, y, endY);
             }else if(object instanceof Image){
                 BufferedImage image = ((Image)object).getImage();
-//                int width = ((Image)object).getWidth();
-//                int height = ((Image)object).getHeight();
-                g.drawImage(image, x, y, null);
+                int width = ((Image)object).getWidth();
+                int height = ((Image)object).getHeight();
+                g.drawImage(image, x, y, width, height, null);
             }else if(object instanceof Text){ //add font
                 String string = ((Text)object).getString();
                 g.setFont(((Text)object).getFont());

@@ -10,26 +10,17 @@ import java.awt.Color;
 import javax.swing.JPanel;
 
 public class Surface {
-    private JPanel surface;
-    private GraphicsPanel canvas;
+    private GraphicsPanel surface;
+//    public GraphicsPanel canvas;
     
     // color param is temp for testing
-    public Surface(Display mainDisplay, Color color, int x, int y, int width, int height) {
-        this.surface = new JPanel();
-        this.surface.setLayout(null);
-        this.surface.setBounds(x, y, width, height);
-        this.surface.setBackground(color);
-
-        this.canvas = new GraphicsPanel();
-        this.canvas.setLayout(null);
-        this.canvas.setBounds(x, y, width, height);
-        this.surface.add(this.canvas);
-
-        mainDisplay.getDisplay().add(this.surface);
+    public Surface(Display display, Color color, int x, int y, int width, int height) {
+        this.surface = new GraphicsPanel();
+        display.getFrame().add(this.surface);
     }
 
     public void update() {
-        this.canvas.repaint();
+        this.surface.repaint();
     }
 
     public void setBackground(Color color) {
@@ -37,16 +28,12 @@ public class Surface {
     }
     
     public void addShape(Shape shape){
-        this.canvas.drawQueue.add(shape);
+        this.surface.drawQueue.add(shape);
     }
 
     /* GETTERS */
 
-    public JPanel getSurface() {
+    public GraphicsPanel getSurface() {
         return this.surface;
-    }
-
-    public GraphicsPanel getCanvas() {
-        return this.canvas;
     }
 }
