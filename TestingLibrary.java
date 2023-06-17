@@ -31,11 +31,21 @@ public class TestingLibrary {
         int x;
         int y;
         int rX = 500;
+        Color color, color2;
         while(true){
             window.update();
             x = window.mouse.getPos()[0];
             y = window.mouse.getPos()[1];
-            Draw.circle(window.getSurface(), Color.RED, x, y, 20);
+            if(window.mouse.getPressed()[1]){
+                color = Color.BLUE;
+            }
+            else{
+                color = Color.RED;
+            }
+            if(window.mouse.isInFrame()){
+                Draw.image(window.getSurface(), 0, 0, 500, 100, "crossyroaddinosaur.png");
+            }
+            Draw.circle(window.getSurface(), color, x, y, 20);
             if(window.key.isPressed(KeyEvent.VK_D)){
                 rX += 10;
                 System.out.println("right");

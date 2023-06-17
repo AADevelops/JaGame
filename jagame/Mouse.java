@@ -20,6 +20,7 @@ public class Mouse {
     final int Y = 1;
     private int[] mousePos = new int[2];
     private boolean[] mouseButtons;
+    private boolean inFrame;
     
     public Mouse(Surface surface) {
         mouseButtons = new boolean[MouseInfo.getNumberOfButtons()];
@@ -34,8 +35,12 @@ public class Mouse {
         return mousePos;
     }
     
-    public boolean[] getPressed(MouseEvent e){
+    public boolean[] getPressed(){
         return mouseButtons;
+    }
+    
+    public boolean isInFrame(){
+        return inFrame;
     }
     
     public class MotionListener implements MouseMotionListener {
@@ -43,7 +48,9 @@ public class Mouse {
 //        final int Y = 1;
 //        private int[] mousePos = new int[2];
         public void mouseDragged(MouseEvent e){
-            
+            mousePos[X] = e.getX();
+            mousePos[Y] = e.getY();
+            mouseButtons[e.getButton()] = true;
         }
         public void mouseMoved(MouseEvent e){
             mousePos[X] = e.getX();
@@ -66,8 +73,10 @@ public class Mouse {
             mouseButtons[e.getButton()] = false;
         }
         public void mouseEntered(MouseEvent e){ 
+            inFrame = true;
         }
         public void mouseExited(MouseEvent e){
+            inFrame = false;
         }
     }
     

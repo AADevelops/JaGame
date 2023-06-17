@@ -21,20 +21,36 @@ public class Image extends Shape{
     private int height;
     
     public Image(int x, int y, int width, int height, String fileName){
+//        load(fileName);
         this.x = x;
         this.y = y;
-        this.width = width;
-        this.height = height;
-        load(fileName);
-    }
-       
-    public void load(String name){
         try{
-            this.picture = ImageIO.read(new File(name));
+            this.picture = ImageIO.read(new File(fileName));
         }
         catch (IOException ex){System.out.println("File not found.");}
-        
+        this.width = width;
+        this.height = height;
     }
+    
+    public Image(int x, int y, String fileName){
+        this.x = x;
+        this.y = y;
+        try{
+            this.picture = ImageIO.read(new File(fileName));
+            this.width = this.picture.getWidth();
+            this.height = this.picture.getHeight();
+        }
+        catch (IOException ex){System.out.println("File not found.");}
+    }
+       
+//    public void load(String name){
+//        try{
+//            this.picture = ImageIO.read(new File(name));
+//        }
+//        catch (IOException ex){System.out.println("File not found.");}
+//        this.width = this.picture.getWidth();
+//        this.height = this.picture.getHeight();
+//    }
     
     public BufferedImage getImage(){
         return this.picture;

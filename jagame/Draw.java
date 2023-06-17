@@ -61,6 +61,10 @@ public class Draw {
         window.getDrawQueue().add(new Image(leftX, topY, width, height, fileName));
     }
     
+    public static void image(Surface window, int leftX, int topY, String fileName){
+        window.getDrawQueue().add(new Image(leftX, topY, fileName));
+    }
+    
     public static void text(Surface window, Color color, int leftX, int topY, String text, Font font){
         if(font == null){
             font = DEFAULT_FONT;
