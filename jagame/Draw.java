@@ -34,7 +34,7 @@ public class Draw {
 //    }
     
     public static void rect(Surface window, Color color, int leftX, int topY, int width, int height){
-        window.getSurface().drawQueue.add(new Rect(color, leftX, topY, width, height));
+        window.getDrawQueue().add(new Rect(color, leftX, topY, width, height));
     }
     
 //    public void polygon(Surface surface, Color color, int[][] points){
@@ -42,29 +42,29 @@ public class Draw {
 //    }
     
     public static void circle(Surface window, Color color, int leftX, int topY, int width){
-        window.getSurface().drawQueue.add(new Ellipse(color, leftX, topY, width, width));
+        window.getDrawQueue().add(new Ellipse(color, leftX, topY, width, width));
     }
     
     public static void ellipse(Surface window, Color color, int leftX, int topY, int width, int height){
-        window.getSurface().drawQueue.add(new Ellipse(color, leftX, topY, width, height));
+        window.getDrawQueue().add(new Ellipse(color, leftX, topY, width, height));
     }
     
     public static void arc(Surface window, Color color, int leftX, int topY, int width, int height, int startAngle, int stopAngle){
-        window.getSurface().drawQueue.add(new Arc(color, leftX, topY, width, height, startAngle, stopAngle));
+        window.getDrawQueue().add(new Arc(color, leftX, topY, width, height, startAngle, stopAngle));
     }
     
     public static void line(Surface window, Color color, int startX, int startY, int endX, int endY){
-        window.getSurface().drawQueue.add(new Line(color, startX, startY, endX, endY));
+        window.getDrawQueue().add(new Line(color, startX, startY, endX, endY));
     }
     
     public static void image(Surface window, int leftX, int topY, int width, int height, String fileName){ //its own surface??
-        window.getSurface().drawQueue.add(new Image(leftX, topY, width, height, fileName));
+        window.getDrawQueue().add(new Image(leftX, topY, width, height, fileName));
     }
     
     public static void text(Surface window, Color color, int leftX, int topY, String text, Font font){
         if(font == null){
             font = DEFAULT_FONT;
         }
-        window.getSurface().drawQueue.add(new Text(color, leftX, topY, text, font));
+        window.getDrawQueue().add(new Text(color, leftX, topY, text, font));
     }
 }

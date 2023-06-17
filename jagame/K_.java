@@ -60,12 +60,12 @@ public class K_ {
                                                          KeyEvent.VK_TAB, KeyEvent.VK_U, KeyEvent.VK_UNDEFINED, KeyEvent.VK_UNDERSCORE, KeyEvent.VK_UNDO, KeyEvent.VK_UP,
                                                          KeyEvent.VK_V, KeyEvent.VK_W, KeyEvent.VK_WINDOWS, KeyEvent.VK_X, KeyEvent.VK_Y, KeyEvent.VK_Z };
     
-    public static void init() {
+    public static void init(Key keyObject) {
+        if (!keyObject.keyMap.isEmpty()) {
+            keyObject.keyMap.clear();
+        }
         for (int i = 0; i < CONSTANT_FIELD_VALUES.length; i++) {
-            if (!Key.keyMap.isEmpty()) {
-                Key.keyMap.clear();
-            }
-            Key.keyMap.put(CONSTANT_FIELD_VALUES[i], false);
+            keyObject.keyMap.put(CONSTANT_FIELD_VALUES[i], false);
         }
     }
     

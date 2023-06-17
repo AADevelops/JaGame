@@ -5,7 +5,9 @@ import jagame.JaGame;
 import jagame.Rect;
 import jagame.Surface;
 import jagame.Draw;
+import jagame.Key;
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 
 public class TestingLibrary {
     public static void main(String[] args) {
@@ -26,12 +28,23 @@ public class TestingLibrary {
         
         JaGame window = new JaGame();
         window.init("Testing Window", 600, 600);
-        Draw.rect(window.getSurface(), Color.BLUE, 100, 100, 100, 50);
-        int y = 300;
+        int x;
+        int y;
+        int rX = 500;
         while(true){
             window.update();
-            y += 1;
-            Draw.circle(window.getSurface(), Color.RED, 200, y, 20);
+            x = window.mouse.getPos()[0];
+            y = window.mouse.getPos()[1];
+            Draw.circle(window.getSurface(), Color.RED, x, y, 20);
+            if(window.key.isPressed(KeyEvent.VK_D)){
+                rX += 10;
+                System.out.println("right");
+            }
+            if(window.key.isPressed(KeyEvent.VK_A)){
+                rX -= 10;
+                System.out.println("left");
+            }
+            Draw.rect(window.getSurface(), Color.BLUE, rX, 100, 100, 50);
             try{Thread.sleep(10);}catch(Exception e){}
         }
     }

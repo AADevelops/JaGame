@@ -9,7 +9,7 @@ import java.util.LinkedList;
 import java.awt.image.BufferedImage;
 
 public class GraphicsPanel extends JPanel {
-    public Queue<Shape> drawQueue = new LinkedList<Shape>();
+    private Queue<Shape> drawQueue = new LinkedList<Shape>();
     
     public GraphicsPanel(){
         setFocusable(true);
@@ -56,5 +56,9 @@ public class GraphicsPanel extends JPanel {
                 g.drawString(string, x, y);
             }
         }
+    }
+    
+    public Queue<Shape> getDrawQueue(){
+        return drawQueue;
     }
 }
