@@ -24,13 +24,14 @@ public class TestingLibrary {
 //        window.init("Testing Window", 600, 600);
 //        window.addShape(new Rect(Color.BLUE, 100, 100, 100, 50));
         
-        JaGame.init("Testing Window", 600, 600);
-        Draw.rect(Color.BLUE, 100, 100, 100, 50);
+        JaGame window = new JaGame();
+        window.init("Testing Window", 600, 600);
+        Draw.rect(window.getSurface(), Color.BLUE, 100, 100, 100, 50);
         int y = 300;
         while(true){
-            JaGame.update();
-            y += 10;
-            Draw.circle(Color.RED, 200, y, 20);
+            window.update();
+            y += 1;
+            Draw.circle(window.getSurface(), Color.RED, 200, y, 20);
             try{Thread.sleep(10);}catch(Exception e){}
         }
     }

@@ -6,11 +6,10 @@
 
 package jagame;
 
-import java.awt.Color;
 import javax.swing.JFrame;
 
 public class Display {
-    private static JFrame window;
+    private JFrame window;
 
     public Display(String title, int width, int height) {
         this.window = new JFrame(title);

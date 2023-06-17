@@ -7,11 +7,9 @@
 package jagame;
 
 import java.awt.Color;
-import javax.swing.JPanel;
 
 public class Surface {
     private GraphicsPanel surface;
-//    public GraphicsPanel canvas;
     
     // color param is temp for testing
     public Surface(Display display, Color color, int x, int y, int width, int height) {

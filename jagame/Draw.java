@@ -6,7 +6,7 @@
 
 package jagame;
 
-import javax.swing.JLabel;
+// import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.Color;
 
@@ -33,38 +33,38 @@ public class Draw {
 //        surface.getSurface().add(textLabel);
 //    }
     
-    public static void rect(Color color, int leftX, int topY, int width, int height){
-        JaGame.mainSurface.getSurface().drawQueue.add(new Rect(color, leftX, topY, width, height));
+    public static void rect(Surface window, Color color, int leftX, int topY, int width, int height){
+        window.getSurface().drawQueue.add(new Rect(color, leftX, topY, width, height));
     }
     
 //    public void polygon(Surface surface, Color color, int[][] points){
 //        
 //    }
     
-    public static void circle(Color color, int leftX, int topY, int width){
-        JaGame.mainSurface.getSurface().drawQueue.add(new Ellipse(color, leftX, topY, width, width));
+    public static void circle(Surface window, Color color, int leftX, int topY, int width){
+        window.getSurface().drawQueue.add(new Ellipse(color, leftX, topY, width, width));
     }
     
-    public static void ellipse(Color color, int leftX, int topY, int width, int height){
-        JaGame.mainSurface.getSurface().drawQueue.add(new Ellipse(color, leftX, topY, width, height));
+    public static void ellipse(Surface window, Color color, int leftX, int topY, int width, int height){
+        window.getSurface().drawQueue.add(new Ellipse(color, leftX, topY, width, height));
     }
     
-    public static void arc(Color color, int leftX, int topY, int width, int height, int startAngle, int stopAngle){
-        JaGame.mainSurface.getSurface().drawQueue.add(new Arc(color, leftX, topY, width, height, startAngle, stopAngle));
+    public static void arc(Surface window, Color color, int leftX, int topY, int width, int height, int startAngle, int stopAngle){
+        window.getSurface().drawQueue.add(new Arc(color, leftX, topY, width, height, startAngle, stopAngle));
     }
     
-    public static void line(Color color, int startX, int startY, int endX, int endY){
-        JaGame.mainSurface.getSurface().drawQueue.add(new Line(color, startX, startY, endX, endY));
+    public static void line(Surface window, Color color, int startX, int startY, int endX, int endY){
+        window.getSurface().drawQueue.add(new Line(color, startX, startY, endX, endY));
     }
     
-    public static void image(int leftX, int topY, int width, int height, String fileName){ //its own surface??
-        JaGame.mainSurface.getSurface().drawQueue.add(new Image(leftX, topY, width, height, fileName));
+    public static void image(Surface window, int leftX, int topY, int width, int height, String fileName){ //its own surface??
+        window.getSurface().drawQueue.add(new Image(leftX, topY, width, height, fileName));
     }
     
-    public static void text(Color color, int leftX, int topY, String text, Font font){
+    public static void text(Surface window, Color color, int leftX, int topY, String text, Font font){
         if(font == null){
             font = DEFAULT_FONT;
         }
-        JaGame.mainSurface.getSurface().drawQueue.add(new Text(color, leftX, topY, text, font));
+        window.getSurface().drawQueue.add(new Text(color, leftX, topY, text, font));
     }
 }
