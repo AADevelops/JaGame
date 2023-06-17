@@ -8,20 +8,28 @@ package jagame;
 
 import java.awt.Color;
 import javax.swing.JPanel;
-import java.awt.Graphics;
-import java.util.Queue;
-import java.util.LinkedList;
 
 public class Surface {
-    private GraphicsPanel surface;
+    private JPanel surface;
+    private GraphicsPanel canvas;
     
     // color param is temp for testing
     public Surface(Display mainDisplay, Color color, int x, int y, int width, int height) {
-        this.surface = new GraphicsPanel();
+        this.surface = new JPanel();
         this.surface.setLayout(null);
         this.surface.setBounds(x, y, width, height);
         this.surface.setBackground(color);
+
+        this.canvas = new GraphicsPanel();
+        this.canvas.setLayout(null);
+        this.canvas.setBounds(x, y, width, height);
+        this.surface.add(this.canvas);
+
         mainDisplay.getDisplay().add(this.surface);
+    }
+
+    public void update() {
+        this.canvas.repaint();
     }
 
     public void setBackground(Color color) {
@@ -29,12 +37,16 @@ public class Surface {
     }
     
     public void addShape(Shape shape){
-        surface.drawQueue.add(shape);
+        this.canvas.drawQueue.add(shape);
     }
 
     /* GETTERS */
 
     public JPanel getSurface() {
         return this.surface;
+    }
+
+    public GraphicsPanel getCanvas() {
+        return this.canvas;
     }
 }

@@ -6,6 +6,7 @@
 
 package jagame;
 
+import java.awt.Color;
 import javax.swing.JFrame;
 
 public class Display {
