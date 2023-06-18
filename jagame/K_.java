@@ -1,5 +1,5 @@
 /* K_ class
- * @description:
+ * @description: Dependency for Key class.
  * @authors: Amun Ahmad & Jethro Lin
  * @version: 6/12/2023
  */
@@ -7,12 +7,8 @@
 package jagame;
 
 import java.awt.event.KeyEvent;
-//import java.util.Scanner;
-//import java.io.File;
-//import java.io.IOException;
 
 public class K_ {
-//    public static final File VARIABLE_FILE = new File("JavaKeyEventValues.txt");
     private static final int[] CONSTANT_FIELD_VALUES = { KeyEvent.VK_0, KeyEvent.VK_1, KeyEvent.VK_2,
                                                          KeyEvent.VK_3, KeyEvent.VK_4, KeyEvent.VK_5,
                                                          KeyEvent.VK_6, KeyEvent.VK_7, KeyEvent.VK_8,
@@ -59,16 +55,21 @@ public class K_ {
                                                          KeyEvent.VK_SHIFT, KeyEvent.VK_SLASH, KeyEvent.VK_SPACE, KeyEvent.VK_STOP, KeyEvent.VK_SUBTRACT, KeyEvent.VK_T,
                                                          KeyEvent.VK_TAB, KeyEvent.VK_U, KeyEvent.VK_UNDEFINED, KeyEvent.VK_UNDERSCORE, KeyEvent.VK_UNDO, KeyEvent.VK_UP,
                                                          KeyEvent.VK_V, KeyEvent.VK_W, KeyEvent.VK_WINDOWS, KeyEvent.VK_X, KeyEvent.VK_Y, KeyEvent.VK_Z };
-    
+
+    /* METHODS */
+
     public static void init(Key keyObject) {
-        if (!keyObject.keyMap.isEmpty()) {
-            keyObject.keyMap.clear();
+        if (!keyObject.getKeyMap().isEmpty()) {
+            keyObject.getKeyMap().clear();
         }
+
         for (int i = 0; i < CONSTANT_FIELD_VALUES.length; i++) {
-            keyObject.keyMap.put(CONSTANT_FIELD_VALUES[i], false);
+            keyObject.getKeyMap().put(CONSTANT_FIELD_VALUES[i], false);
         }
     }
-    
+
+    /* GETTERS */
+
     public static int getFieldValue(int i) {
         return CONSTANT_FIELD_VALUES[i];
     }

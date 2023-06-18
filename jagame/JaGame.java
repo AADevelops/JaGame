@@ -1,5 +1,5 @@
 /* JaGame class
- * @description:
+ * @description: Beginner-friendly module for initializing graphical display.
  * @authors: Amun Ahmad & Jethro Lin
  * @version: 6/9/2023
  */
@@ -9,32 +9,41 @@ package jagame;
 import java.awt.Color;
 
 public class JaGame {
-    public Display mainWindow;
-    public Surface mainSurface;
-    public Key key;
-    public Mouse mouse;
-    
-//    public JaGame(String title, width, height){
-//        
-//    }
+    private Display mainWindow;
+    private GraphicsPanel mainSurface;
+    private Key key;
+    private Mouse mouse;
 
-    public void init(String title, int width, int height) {
+    public JaGame(String title, int width, int height) {
         this.mainWindow = new Display(title, width, height);
-        this.mainSurface = new Surface(this.mainWindow, Color.BLACK, 0, 0, width, height);
-//        Key.init(this.mainSurface);
-//        Mouse.init(this.mainSurface);
-        key = new Key();
-        this.mainSurface.getGraphicsPanel().addKeyListener(key);
-        mouse = new Mouse(this.mainSurface);
+        this.mainSurface = new GraphicsPanel(this.mainWindow, Color.BLACK, 0, 0, width, height);
+        this.key = new Key();
+        this.mainSurface.addKeyListener(this.key);
+        this.mouse = new Mouse(this.mainSurface);
     }
 
-    public void update() {
-        this.mainSurface.getGraphicsPanel().repaint();
+    /* METHODS */
+
+    public void update(int sleepTime) {
+        this.mainSurface.repaint();
+        try { Thread.sleep(sleepTime); } catch (Exception e) {}
     }
 
-    public Surface getSurface() {
+    /* GETTERS */
+
+    public GraphicsPanel getSurface() {
         return this.mainSurface;
     }
+
+    public Key getKey() {
+        return this.key;
+    }
+
+    public Mouse getMouse() {
+        return this.mouse;
+    }
+
+    /* SETTERS */
 
     public void setBackground(Color newColor) {
         this.mainSurface.setBackground(newColor);

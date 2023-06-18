@@ -1,10 +1,12 @@
+/* Shape class
+ * @description: Main shape class.
+ * @authors: Amun Ahmad
+ * @version: 6/16/2023
+ */
 
 package jagame;
 
-abstract class Shape{
-    private int x;
-    private int y;
-    
+abstract class Shape {  
     abstract int getX();
     abstract int getY();
 }

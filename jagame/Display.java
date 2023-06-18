@@ -1,5 +1,5 @@
 /* Display class
- * @description:
+ * @description: Main window for applications.
  * @authors: Amun Ahmad & Jethro Lin
  * @version: 6/9/2023
  */
@@ -17,6 +17,8 @@ public class Display {
         this.window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.window.setVisible(true);
     }
+
+    /* METHODS */
 
     public void quit() {
         this.window = null;

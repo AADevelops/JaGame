@@ -1,61 +1,94 @@
 // Tester Program for JaGame Library
 
-import jagame.Display;
 import jagame.JaGame;
-import jagame.Rect;
-import jagame.Surface;
 import jagame.Draw;
 import jagame.Key;
+import jagame.Mouse;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 
 public class TestingLibrary {
     public static void main(String[] args) {
-        // Display screenOne = new Display("Screen One", 600, 600);
-        // Display screenTwo = new Display("Screen Two", 600, 600);
+        final int SCREEN_X = 600;
+        final int SCREEN_Y = 600;
+        final int RECT_WIDTH = 50;
+        final int RECT_HEIGHT = 50;
 
-        // Surface firstPanel = new Surface(screenOne, Color.BLUE, 0, 0, 300, 300);
-        // Surface secondPanel = new Surface(screenOne, Color.RED, 300, 0, 300, 300);
-        // Surface thirdPanel = new Surface(screenOne, Color.GREEN, 0, 300, 300, 300);
-        // Surface fourthPanel = new Surface(screenOne, Color.YELLOW, 300, 300, 300, 300);
-        
-        // Draw drawer = new Draw();
-        // drawer.addText(secondPanel, "testing text", null, 100, 40, 10, 30);
+        // Main Window Set Up
+        JaGame window = new JaGame("Chicken Butt", SCREEN_X, SCREEN_Y);
+        window.setBackground(Color.BLACK);
 
-//        JaGame window = new JaGame();
-//        window.init("Testing Window", 600, 600);
-//        window.addShape(new Rect(Color.BLUE, 100, 100, 100, 50));
-        
-        JaGame window = new JaGame();
-        window.init("Testing Window", 600, 600);
-        int x;
-        int y;
-        int rX = 500;
-        Color color, color2;
-        while(true){
-            window.update();
-            x = window.mouse.getPos()[0];
-            y = window.mouse.getPos()[1];
-            if(window.mouse.getPressed()[1]){
+        // Keyboard Set Up
+        Key key = window.getKey();
+
+        // Mouse Set Up
+        Mouse mouse = window.getMouse();
+        int mouseX;
+        int mouseY;
+
+        // Rectangle Set Up
+        int rectX = (SCREEN_X / 2) - 25;
+        int rectY = 100;
+        Color color;
+
+        // Main Game Loop
+        while (true) {
+            mouseX = mouse.getPos()[0];
+            mouseY = mouse.getPos()[1];
+
+            // Drawing Text
+            Draw.text(window.getSurface(), Color.RED, SCREEN_X / 2 - 75, 60, "Samir", null);
+
+            // Circle Color Based on Mouse Status (Click & Drag vs. Click vs. No Click)
+            if (mouse.getDragging()) {
+                color = Color.GREEN;
+            } else if (mouse.getPressed()[1]) {
                 color = Color.BLUE;
-            }
-            else{
+            } else {
                 color = Color.RED;
             }
-            if(window.mouse.isInFrame()){
-                Draw.image(window.getSurface(), 0, 0, 500, 100, "crossyroaddinosaur.png");
+
+            // Mouse in Window Check
+            if (mouse.getInWindow()) {
+                Draw.image(window.getSurface(), (SCREEN_X / 2) - 150, (SCREEN_Y / 2) - 225, 300, 400, "crossyroaddinosaur.png");
             }
-            Draw.circle(window.getSurface(), color, x, y, 20);
-            if(window.key.isPressed(KeyEvent.VK_D)){
-                rX += 10;
-                System.out.println("right");
+
+            // Drawing Circle
+            Draw.circle(window.getSurface(), color, mouseX - 10, mouseY - 10, 20);
+
+            // WASD Movement
+            if (key.isPressed(KeyEvent.VK_W)) {
+                rectY -= 10;
             }
-            if(window.key.isPressed(KeyEvent.VK_A)){
-                rX -= 10;
-                System.out.println("left");
+            if (key.isPressed(KeyEvent.VK_S)) {
+                rectY += 10;
             }
-            Draw.rect(window.getSurface(), Color.BLUE, rX, 100, 100, 50);
-            try{Thread.sleep(10);}catch(Exception e){}
+            if (key.isPressed(KeyEvent.VK_D)) {
+                rectX += 10;
+            }
+            if (key.isPressed(KeyEvent.VK_A)) {
+                rectX -= 10;
+            }
+
+            // Window Collisions
+            if (rectX <= 0) {
+                rectX = SCREEN_X - RECT_WIDTH - 1;
+            }
+            if (rectX >= SCREEN_X - RECT_WIDTH) {
+                rectX = 0;
+            }
+            if (rectY <= 0) {
+                rectY = SCREEN_Y - RECT_HEIGHT - 1;
+            }
+            if (rectY >= SCREEN_Y - RECT_HEIGHT) {
+                rectY = 0;
+            }
+
+            // Drawing Rectangle
+            Draw.rect(window.getSurface(), Color.PINK, rectX, rectY, RECT_WIDTH, RECT_HEIGHT);
+
+            // Window Update
+            window.update(10);
         }
     }
 }
